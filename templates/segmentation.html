@@ -1,0 +1,44 @@
+<img src="data:image/jpeg;base64,{{image_location}}"/>
+<canvas id="canvas" width="100" height="100"></canvas>
+<form method="post",action="/segment">
+    <h2>
+        {% if true_label != None %}
+        Please manually segment the {{true_label}} in the following images:
+		{% else %}
+        Please manually segment main subject in the following images:
+		{% endif %} 
+    </h2>
+    <label for="length">Width:</label>
+    <input type="number" id="length" name="length"><br><br>
+    <label for="width">Length:</label>
+    <input type="number" id="width" name="width"><br><br>
+    <label for="center_x">Center X:</label>
+    <input type="number" id="center_x" name="center_x"><br><br>
+    <label for="center_y">Center Y:</label>
+    <input type="number" id="center_y" name="center_y"><br><br>
+    <button type="button" onclick="apply_segmentation()">Apply</button>
+    <button type="submit">Submit</button>
+    <input type="hidden" name="true_label" value="{{ true_label }}">
+    <input type="hidden" name="file_location" value="{{ file_location }}">
+    <input type="hidden" name="file_name" value="{{ file_name }}">
+</form>
+<button><a href="/">Home</a></button>
+<script>
+function apply_segmentation() {
+    var length = parseInt(document.getElementById("length").value);
+    var width = parseInt(document.getElementById("width").value);
+    var center_x = parseInt(document.getElementById("center_x").value);
+    var center_y = parseInt(document.getElementById("center_y").value);
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var img = document.querySelector('img');
+    var img_width = img.clientWidth;
+    var img_height = img.clientHeight;
+    canvas.width = img_width;
+    canvas.height = img_height;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, img_width, img_height);
+    ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+    ctx.fillRect(center_x - length / 2, center_y - width / 2, length, width);
+}
+</script>

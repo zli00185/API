@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image and label Input</title>
+</head>
+<body>
+  <h1>Image and String Input (Only JPEG)</h1>
+  <form method="post" action="/upload" enctype="multipart/form-data">
+    
+    <label for="file">Select an Image:</label>
+    <input type="file" id="image" name="file" accept=".png, .jpeg, .jpg, .pdf"><br>
+    
+    
+    <label for="label">Enter a label for the image:</label>
+    <input type="text" id="label" name="label" required><br>
+
+    
+
+    <button type="submit">Upload</button>
+  </form>
+  <button><a href="/">Home</a></button>
+</body>
+</html>

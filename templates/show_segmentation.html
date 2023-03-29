@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Image</title>
+  </head>
+  <body>
+    <h1>All segmentation Image</h1>
+    {% for image_str in seg_location %}
+    <img src="data:image/jpeg;base64,{{image_str}}">
+    {% endfor %}
+  </body>
+  <button><a href="/">Home</a></button>
+</html>

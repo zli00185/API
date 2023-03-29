@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Label Checker</title>
+</head>
+<body>
+	<div>
+		<h1>Label Checker</h1>
+		<p>
+			{% if label!=None and label.lower() == true_label.lower() %}
+				correct label
+			{% else %}
+				take another guess
+			{% endif %}
+		</p>
+	</div>
+	<button><a href="/">Home</a></button>
+</body>
+</html>
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Test</title>
+</head>
+<body>
+    <img src="data:image.jpeg;base64,{{image_location}}"/>
+    <form method="post" action="/test">
+      <input type="hidden" name="true_label" value="{{ true_label }}">
+      <label for="text">Enter a Label:</label>
+      <input type="text" id="label" name="label"><br>
+      <button type="submit">Submit</button>
+    </form>
+    <button><a href="/">Home</a></button>
+</body>
+</html>
+
+
